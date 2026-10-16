@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": { "cwd": "${fileDirname}" },
+            "problemMatcher": ["$gcc"],
+            "presentation": { "reveal": "silent", "panel": "shared" }
+        },
+        {
+            "label": "execute",
+            "type": "shell",
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "options": { "cwd": "${fileDirname}" },
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "shared", "focus": true, "clear": true }
+        },
+        {
+            "label": "build",
+            "dependsOrder": "sequence",
+            "dependsOn": ["compile", "execute"],
+            "problemMatcher": [],
+            "group": { "kind": "build", "isDefault": true }
+        }
+    ]
+}
