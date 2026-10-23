@@ -1,6 +1,40 @@
 {
+    // F5 直接就是"调试当前目录全部文件"，不用再选配置
+    // 单文件调试配置已暂时移除；需要时从下面注释里恢复
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "调试当前目录全部文件 (gdb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\app.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\Users\\LinQi\\Downloads\\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\\mingw64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "限制容器只显示 10 个元素（MinGW gdb 8.1 展不开 std::string，展太深会崩）",
+                    "text": "-gdb-set print elements 10",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "关掉美化排版，少让 gdb 深挖 STL 内部结构",
+                    "text": "-gdb-set print pretty off",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "compile-all"
+        }
+    ]
+}
+
+/*
+============ 单文件调试配置（需要时把这段粘回 configurations 数组里）============
+        ,
         {
             "name": "调试当前文件 (gdb)",
             "type": "cppdbg",
@@ -22,5 +56,5 @@
             ],
             "preLaunchTask": "build"
         }
-    ]
-}
+============ 单文件调试配置结束 ============
+*/

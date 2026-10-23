@@ -50,7 +50,7 @@ sort(scores.begin(), scores.end(), [](const pair<string,int>& a,
                                           //    ↑ 小于号 = 升序
 });
 for (auto& [name, score] : scores) {
-    cout << name<<" "<<score;
+    cout << name<<" "<<score<<endl;
 }
     return 0;
 }

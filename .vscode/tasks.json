@@ -31,6 +31,36 @@
             "dependsOn": ["compile", "execute"],
             "problemMatcher": [],
             "group": { "kind": "build", "isDefault": true }
+        },
+        {
+            "label": "compile-all",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-g",
+                "${fileDirname}\\*.cpp",
+                "-o",
+                "${fileDirname}\\app.exe"
+            ],
+            "options": { "cwd": "${fileDirname}" },
+            "problemMatcher": ["$gcc"],
+            "presentation": { "reveal": "silent", "panel": "shared" }
+        },
+        {
+            "label": "execute-all",
+            "type": "shell",
+            "command": "${fileDirname}\\app.exe",
+            "options": { "cwd": "${fileDirname}" },
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "shared", "focus": true, "clear": true }
+        },
+        {
+            "label": "build-all",
+            "dependsOrder": "sequence",
+            "dependsOn": ["compile-all", "execute-all"],
+            "problemMatcher": []
         }
     ]
 }

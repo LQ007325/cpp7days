@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // day6 main  ——  多文件工程（main.cpp）
 // ============================================================
 // 在 switch 里补全 case 1..7，调用 student.h 里声明的函数。
@@ -10,7 +10,7 @@
 // 附加任务: 在 sortByScore 里打断点，按 F5 单步，观察 vector 的变化
 //
 // 编译运行: VS Code 里按 Ctrl+Shift+B
-//           或终端:  g++ -std=c++17 -Wall main.cpp -o main.exe
+//           或终端:  g++ -std=c++17 -Wall -g *.cpp -o app.exe
 // ============================================================
 
 #include "student.h"
@@ -27,6 +27,13 @@ int main() {
         switch (choice) {
             case 0: return 0;
             // TODO: 补全 case 1..7，调用对应函数
+            case 1: addStudent(list);    break;
+    case 2: removeStudent(list); break;
+    case 3: findById(list);      break;
+    case 4: updateScore(list);   break;
+    case 5: showAll(list);       break;
+    case 6: sortByScore(list);   break;
+    case 7: showAverage(list);   break;
             default: cout << "无效选择\n";
         }
     }
